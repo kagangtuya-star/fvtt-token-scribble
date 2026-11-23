@@ -1,0 +1,219 @@
+{
+  "TOKEN_SCRIBBLE": {
+    "Token": {
+      "DefaultName": "随绘棋子"
+    },
+    "Tool": {
+      "pen": "钢笔",
+      "marker": "马克笔",
+      "brush": "毛笔",
+      "fill": "填充",
+      "eraser": "橡皮"
+    },
+    "ToolHint": {
+      "pen": "清晰墨线，带压感",
+      "marker": "等宽、略透明",
+      "brush": "粗细多变、收尖",
+      "fill": "画一个闭合圈即可填色",
+      "eraser": "只擦除绘画内容",
+      "fillLong": "画一个闭合的圈，圈内会用当前颜色填满。适合快速画剪影和阴影。",
+      "eraserLong": "只擦除绘画层，不会碰棋子原本的图像。数位笔的橡皮端会自动切换为橡皮。"
+    },
+    "Toolbar": {
+      "Label": "{name} 的绘画工具",
+      "Drag": "拖动可移动 · 双击复位",
+      "Tools": "工具",
+      "Size": "笔刷粗细",
+      "Colors": "颜色",
+      "ColorName": "颜色 {color}",
+      "CustomColor": "自定义颜色",
+      "Mirror": "左右镜像绘画",
+      "Focus": "聚焦到棋子",
+      "Undo": "撤销",
+      "Redo": "重做",
+      "More": "更多操作",
+      "Done": "完成",
+      "DoneHint": "结束绘画（修改会自动保存）",
+      "Opacity": "不透明度",
+      "Pressure": "压感强度",
+      "PressurePen": "正在使用数位笔压感。",
+      "PressureMouse": "检测到鼠标：根据运笔速度模拟压感，慢画更粗。",
+      "Storage": "存储占用 {used} KB / {max} KB（{pct}%）",
+      "PeerEditing": "{name} 也在这枚棋子上绘画",
+      "Someone": "其他用户",
+      "Untitled": "棋子"
+    },
+    "Status": {
+      "saved": "已保存",
+      "dirty": "未保存",
+      "saving": "保存中…",
+      "error": "未能保存",
+      "offline": "离线",
+      "errorHint": "保存失败。笔画已保留在本地，稍后会自动重试。",
+      "offlineHint": "服务器没有响应。笔画已保留在本地，稍后会自动重试。"
+    },
+    "Menu": {
+      "Copy": "复制涂鸦",
+      "Paste": "粘贴涂鸦",
+      "ExportPng": "导出涂鸦 PNG",
+      "ExportPngFull": "导出棋子（含涂鸦）PNG",
+      "ExportSvg": "导出涂鸦 SVG",
+      "HideLayer": "隐藏涂鸦层",
+      "ShowLayer": "显示涂鸦层",
+      "Prototype": "设为角色默认棋子涂鸦",
+      "Clear": "清空涂鸦",
+      "Revert": "放弃本次编辑的修改",
+      "Help": "快捷键"
+    },
+    "Help": {
+      "Title": "快捷键",
+      "Line": "画直线",
+      "LineKey": "按住 Shift",
+      "Wheel": "滚轮",
+      "Pan": "平移 / 缩放地图",
+      "PanKey": "右键拖动 / 滚轮"
+    },
+    "Hud": {
+      "Draw": "在棋子上绘画",
+      "Edit": "编辑涂鸦",
+      "Busy": "{names} 正在编辑",
+      "Replace": "替换模式：重绘棋子图片",
+      "ReplaceRestore": "右键：还原原始图片"
+    },
+    "Controls": {
+      "Create": "随绘棋子：点击地图放置一枚空白棋子并开始绘画"
+    },
+    "Placement": {
+      "Hint": "点击地图放置随绘棋子 · 按住 Shift 不吸附网格 · Esc 取消"
+    },
+    "Keys": {
+      "Create": {
+        "Name": "在光标处新建随绘棋子",
+        "Hint": "在鼠标位置创建一枚透明空白棋子，并立即开始绘画。"
+      },
+      "Edit": {
+        "Name": "在选中棋子上绘画",
+        "Hint": "在选中（或悬停）的棋子上开始绘画，原有图像保持不变。"
+      },
+      "Replace": {
+        "Name": "重绘选中棋子的图片（替换模式）",
+        "Hint": "为选中（或悬停）的棋子打开替换模式编辑器：结果保存为新的图片文件，原图备份在世界目录中。"
+      }
+    },
+    "Draft": {
+      "Title": "恢复未保存的绘画？",
+      "Content": "TokenScribble 在这枚棋子上发现了未保存的笔画（{time}）。要恢复吗？",
+      "Restore": "恢复"
+    },
+    "Corrupt": {
+      "Title": "绘画数据无法读取",
+      "Content": "这枚棋子上保存的绘画数据无法读取。你可以开始一幅新的绘画，保存时会替换掉无法读取的数据。",
+      "Confirm": "开始新绘画"
+    },
+    "Revert": {
+      "Title": "放弃修改？",
+      "Content": "这会删除你在本次编辑中画下的内容，并恢复你擦除或撤销的部分。其他用户添加的笔画会保留。",
+      "Confirm": "放弃"
+    },
+    "Prototype": {
+      "Title": "设为默认涂鸦？",
+      "Content": "之后从 {name} 新放置的棋子都会带上这幅涂鸦，已有的棋子不受影响。"
+    },
+    "Notify": {
+      "NoScene": "TokenScribble：请先打开一个场景。",
+      "NotReady": "TokenScribble：棋子尚未准备好，请稍后再试。",
+      "NoPermission": "TokenScribble：你没有修改这枚棋子的权限。",
+      "NoCreatePermission": "TokenScribble：你没有在此场景创建棋子的权限。",
+      "PermissionLost": "TokenScribble：你已失去修改这枚棋子的权限，绘画已停止。",
+      "CreateFailed": "TokenScribble：无法创建棋子。",
+      "StartFailed": "TokenScribble：无法开始绘画，详情见控制台。",
+      "NewerFormat": "TokenScribble：这幅绘画由更新版本的 TokenScribble 创建，请先更新模组再编辑。",
+      "Deleted": "TokenScribble：棋子已被删除。",
+      "Budget": "TokenScribble：绘画已达到存储上限（{max} KB）。擦除不会释放空间，请使用“清空涂鸦”或请 GM 调高上限。",
+      "Merged": "TokenScribble：已合并 {name} 的笔画。",
+      "AlsoEditing": "TokenScribble：{names} 也在这枚棋子上绘画，双方修改会自动合并。",
+      "SavedLocally": "TokenScribble：暂时无法连接服务器。绘画已保存在本浏览器中，下次打开时可以恢复。",
+      "SaveFailed": "TokenScribble：保存失败。",
+      "Copied": "TokenScribble：已复制 {count} 笔。",
+      "Pasted": "TokenScribble：已粘贴 {count} 笔（Ctrl+Z 可撤销粘贴）。",
+      "Cleared": "TokenScribble：已清空涂鸦（Ctrl+Z 可恢复）。",
+      "Reverted": "TokenScribble：已放弃本次编辑的修改。",
+      "LayerHidden": "TokenScribble：涂鸦已隐藏，数据仍然保留。",
+      "LayerShown": "TokenScribble：涂鸦已重新显示。",
+      "PrototypeSaved": "TokenScribble：之后新放置的 {name} 棋子会使用这幅涂鸦。",
+      "SelectFirst": "TokenScribble：请先选中一枚棋子（或按 N 新建）。",
+      "Unsupported": "TokenScribble 需要 Foundry VTT v13 或更高版本。"
+    },
+    "Settings": {
+      "MaxKB": {
+        "Name": "每枚棋子的存储上限（KB）",
+        "Hint": "单枚棋子绘画数据的上限。绘画保存在场景中，数值过大会让场景加载变慢。"
+      },
+      "TokenSize": {
+        "Name": "新随绘棋子的尺寸",
+        "Hint": "通过快捷键或场景控件创建棋子时使用的网格尺寸。",
+        "Tiny": "½ × ½（微型）",
+        "Medium": "1 × 1（中型）",
+        "Large": "2 × 2（大型）",
+        "Huge": "3 × 3（巨型）",
+        "Gargantuan": "4 × 4（超巨型）"
+      },
+      "CreateHidden": {
+        "Name": "GM：新建随绘棋子默认隐藏",
+        "Hint": "让 GM 画完再给玩家看。可在棋子 HUD 中切换显示。"
+      },
+      "Pressure": {
+        "Name": "压感",
+        "Hint": "“自动”在有数位笔时使用真实压感，用鼠标时模拟压感。",
+        "Auto": "自动",
+        "Simulate": "总是模拟",
+        "Off": "关闭（等宽）"
+      },
+      "AutoFocus": {
+        "Name": "开始绘画时自动放大小棋子",
+        "Hint": "平滑缩放地图，让小棋子便于绘画；结束后自动回到原视角。"
+      }
+    },
+    "Replace": {
+      "TitleToken": "替换模式 · {name}",
+      "TitlePortrait": "替换模式 · {name} 的肖像",
+      "Canvas": "绘画区域",
+      "Info": "将保存为 {w} × {h} 的新 PNG，存放在本世界目录中；保存前会先把原图备份到同一目录，随时可以还原。",
+      "BakesOverlay": "这枚棋子上的原位涂鸦已一并载入，将合并进图片。",
+      "Prototype": "同时用于角色的原型棋子",
+      "Apply": "替换图片",
+      "Cancel": "取消",
+      "Restore": "还原原图",
+      "Fit": "适应窗口",
+      "StatusClean": "未修改",
+      "StatusDirty": "尚未应用",
+      "EraserHint": "擦除笔画和原图",
+      "EraserLong": "替换模式下，橡皮也会擦掉原图的像素。清空即可回到原图。",
+      "ExportPreview": "导出结果为 PNG",
+      "ClearStrokes": "清空笔画（回到原图）",
+      "DiscardTitle": "放弃修改？",
+      "DiscardContent": "笔画尚未应用。要关闭编辑器并放弃这些修改吗？",
+      "Discard": "放弃",
+      "DoneToken": "{name} 的棋子图片已替换，原图已备份。",
+      "DonePortrait": "{name} 的肖像已替换，原图已备份。",
+      "BackupFailed": "无法备份原图，因此没有做任何修改。请确认图片可以加载，并且你有上传文件的权限。",
+      "CrossOrigin": "原图来自不允许复制的外部网站，无法在这里编辑。",
+      "LoadFailed": "无法加载当前图片（文件缺失，或外部图片不允许复制）。",
+      "Failed": "替换图片失败，没有做任何修改。详情见控制台。",
+      "RestoreTitle": "还原原始图片？",
+      "RestoreContent": "将恢复原图（若原文件已不存在，则使用世界目录中的备份）。生成的图片仍保留在世界目录中。",
+      "Restored": "{name} 的原始图片已还原。",
+      "RestoreFailed": "还原原图失败。详情见控制台。",
+      "AlreadyOpen": "已经打开了另一个替换模式编辑器，请先完成或关闭它。",
+      "CloseFirst": "请先关闭替换模式编辑器。",
+      "MenuPortrait": "重绘肖像（替换模式）",
+      "MenuRestorePortrait": "还原原始肖像",
+      "SheetButton": "重绘",
+      "Refused": {
+        "permission": "你没有修改这张图片的权限。",
+        "files": "替换模式需要“上传新文件”和“使用文件浏览器”权限。请联系 GM，或改用原位绘画。",
+        "video": "视频图片无法在替换模式下重绘，请改用原位绘画。"
+      }
+    }
+  }
+}

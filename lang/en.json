@@ -1,0 +1,219 @@
+{
+  "TOKEN_SCRIBBLE": {
+    "Token": {
+      "DefaultName": "Scribble"
+    },
+    "Tool": {
+      "pen": "Pen",
+      "marker": "Marker",
+      "brush": "Brush",
+      "fill": "Fill",
+      "eraser": "Eraser"
+    },
+    "ToolHint": {
+      "pen": "crisp ink with pressure",
+      "marker": "even width, slightly translucent",
+      "brush": "expressive, tapered strokes",
+      "fill": "draw a loop to fill it",
+      "eraser": "erases only the drawing",
+      "fillLong": "Draw a closed loop: the inside is filled with the current colour. Great for silhouettes and shadows.",
+      "eraserLong": "Removes drawing only. The token's original image is never touched. Pen erasers work automatically."
+    },
+    "Toolbar": {
+      "Label": "Drawing tools for {name}",
+      "Drag": "Drag to move · double-click to reset",
+      "Tools": "Tools",
+      "Size": "Brush size",
+      "Colors": "Colours",
+      "ColorName": "Colour {color}",
+      "CustomColor": "Custom colour",
+      "Mirror": "Mirror drawing",
+      "Focus": "Zoom to token",
+      "Undo": "Undo",
+      "Redo": "Redo",
+      "More": "More actions",
+      "Done": "Done",
+      "DoneHint": "Finish drawing (changes are saved automatically)",
+      "Opacity": "Opacity",
+      "Pressure": "Pressure response",
+      "PressurePen": "Using your stylus pressure.",
+      "PressureMouse": "Mouse detected: pressure is simulated from drawing speed — slow strokes are bolder.",
+      "Storage": "Storage {used} KB of {max} KB ({pct}%)",
+      "PeerEditing": "{name} is also drawing on this token",
+      "Someone": "Another user",
+      "Untitled": "Token"
+    },
+    "Status": {
+      "saved": "Saved",
+      "dirty": "Unsaved",
+      "saving": "Saving…",
+      "error": "Not saved",
+      "offline": "Offline",
+      "errorHint": "Saving failed. Your strokes are kept locally and saving will be retried.",
+      "offlineHint": "The server did not answer. Your strokes are kept locally and saving will be retried."
+    },
+    "Menu": {
+      "Copy": "Copy drawing",
+      "Paste": "Paste drawing",
+      "ExportPng": "Export drawing as PNG",
+      "ExportPngFull": "Export token with drawing as PNG",
+      "ExportSvg": "Export drawing as SVG",
+      "HideLayer": "Hide drawing layer",
+      "ShowLayer": "Show drawing layer",
+      "Prototype": "Use as actor's default token drawing",
+      "Clear": "Clear drawing",
+      "Revert": "Discard this session's changes",
+      "Help": "Keyboard shortcuts"
+    },
+    "Help": {
+      "Title": "Keyboard shortcuts",
+      "Line": "Straight line",
+      "LineKey": "hold Shift",
+      "Wheel": "wheel",
+      "Pan": "Pan / zoom the map",
+      "PanKey": "right-drag / wheel"
+    },
+    "Hud": {
+      "Draw": "Draw on token",
+      "Edit": "Edit drawing",
+      "Busy": "Being edited by {names}",
+      "Replace": "Replace mode: redraw the token image",
+      "ReplaceRestore": "Right-click: restore the original image"
+    },
+    "Controls": {
+      "Create": "Scribble token: click the map to place a blank token and draw"
+    },
+    "Placement": {
+      "Hint": "Click on the map to place a scribble token · Shift: no grid snapping · Esc: cancel"
+    },
+    "Keys": {
+      "Create": {
+        "Name": "Create scribble token at cursor",
+        "Hint": "Creates a blank, transparent token under the mouse and starts drawing on it."
+      },
+      "Edit": {
+        "Name": "Draw on selected token",
+        "Hint": "Starts drawing on the selected (or hovered) token, keeping its image intact."
+      },
+      "Replace": {
+        "Name": "Redraw selected token image (replace mode)",
+        "Hint": "Opens the replace-mode editor for the selected (or hovered) token: the result is saved as a new image file and the original is backed up in the world folder."
+      }
+    },
+    "Draft": {
+      "Title": "Restore unsaved drawing?",
+      "Content": "TokenScribble found strokes on this token that were not saved (from {time}). Restore them?",
+      "Restore": "Restore"
+    },
+    "Corrupt": {
+      "Title": "Drawing data unreadable",
+      "Content": "The drawing stored on this token could not be read. You can start a new drawing; the unreadable data is replaced when you save.",
+      "Confirm": "Start new drawing"
+    },
+    "Revert": {
+      "Title": "Discard changes?",
+      "Content": "This removes everything you drew in this session and restores what you erased or undid. Strokes added by other users are kept.",
+      "Confirm": "Discard"
+    },
+    "Prototype": {
+      "Title": "Use as default drawing?",
+      "Content": "New tokens of {name} will start with this drawing. Existing tokens are not changed."
+    },
+    "Notify": {
+      "NoScene": "TokenScribble: open a scene first.",
+      "NotReady": "TokenScribble: this token is not ready yet. Try again in a moment.",
+      "NoPermission": "TokenScribble: you do not have permission to modify this token.",
+      "NoCreatePermission": "TokenScribble: you do not have permission to create tokens in this scene.",
+      "PermissionLost": "TokenScribble: you no longer have permission to modify this token. Drawing stopped.",
+      "CreateFailed": "TokenScribble: the token could not be created.",
+      "StartFailed": "TokenScribble: drawing could not be started. See the console for details.",
+      "NewerFormat": "TokenScribble: this drawing was made with a newer version of TokenScribble. Update the module to edit it.",
+      "Deleted": "TokenScribble: the token was deleted.",
+      "Budget": "TokenScribble: this drawing reached the storage limit ({max} KB). Erasing does not free space; use Clear or ask the GM to raise the limit.",
+      "Merged": "TokenScribble: merged strokes from {name}.",
+      "AlsoEditing": "TokenScribble: {names} is also drawing on this token. Changes are merged automatically.",
+      "SavedLocally": "TokenScribble: could not reach the server. Your drawing is kept in this browser and will be offered again next time.",
+      "SaveFailed": "TokenScribble: saving failed.",
+      "Copied": "TokenScribble: copied {count} strokes.",
+      "Pasted": "TokenScribble: pasted {count} strokes (Ctrl+Z undoes the paste).",
+      "Cleared": "TokenScribble: drawing cleared (Ctrl+Z brings it back).",
+      "Reverted": "TokenScribble: this session's changes were discarded.",
+      "LayerHidden": "TokenScribble: drawing hidden. The data is kept.",
+      "LayerShown": "TokenScribble: drawing visible again.",
+      "PrototypeSaved": "TokenScribble: new tokens of {name} will use this drawing.",
+      "SelectFirst": "TokenScribble: select a token first (or press N to create a new one).",
+      "Unsupported": "TokenScribble requires Foundry VTT v13 or newer."
+    },
+    "Settings": {
+      "MaxKB": {
+        "Name": "Storage limit per token (KB)",
+        "Hint": "Upper bound for one token's drawing data. Drawings are stored in the scene, so very large values make scenes heavier to load."
+      },
+      "TokenSize": {
+        "Name": "Size of new scribble tokens",
+        "Hint": "Grid size used for tokens created with the shortcut or the scene control.",
+        "Tiny": "½ × ½ (tiny)",
+        "Medium": "1 × 1 (medium)",
+        "Large": "2 × 2 (large)",
+        "Huge": "3 × 3 (huge)",
+        "Gargantuan": "4 × 4 (gargantuan)"
+      },
+      "CreateHidden": {
+        "Name": "GM: create scribble tokens hidden",
+        "Hint": "Lets the GM finish a drawing before players can see it. Reveal it from the Token HUD."
+      },
+      "Pressure": {
+        "Name": "Pressure",
+        "Hint": "Auto uses stylus pressure when available and simulates it for mice.",
+        "Auto": "Auto",
+        "Simulate": "Always simulate",
+        "Off": "Off (uniform width)"
+      },
+      "AutoFocus": {
+        "Name": "Zoom to small tokens when drawing starts",
+        "Hint": "Smoothly zooms the map so a small token is comfortable to draw on, and returns afterwards."
+      }
+    },
+    "Replace": {
+      "TitleToken": "Replace mode · {name}",
+      "TitlePortrait": "Replace mode · portrait of {name}",
+      "Canvas": "Drawing area",
+      "Info": "Saved as a new {w} × {h} PNG in this world's folder; the original image is backed up there first and can be restored at any time.",
+      "BakesOverlay": "The token's in-place drawing is included and will be merged into the image.",
+      "Prototype": "Also use for the actor's prototype token",
+      "Apply": "Replace image",
+      "Cancel": "Cancel",
+      "Restore": "Restore original",
+      "Fit": "Fit to window",
+      "StatusClean": "No changes",
+      "StatusDirty": "Not applied yet",
+      "EraserHint": "erases strokes and the image",
+      "EraserLong": "In replace mode the eraser also removes pixels of the original image. Clearing brings the original back.",
+      "ExportPreview": "Export result as PNG",
+      "ClearStrokes": "Clear strokes (back to the original)",
+      "DiscardTitle": "Discard changes?",
+      "DiscardContent": "Your strokes have not been applied yet. Close the editor and discard them?",
+      "Discard": "Discard",
+      "DoneToken": "The image of {name} was replaced. The original is backed up.",
+      "DonePortrait": "The portrait of {name} was replaced. The original is backed up.",
+      "BackupFailed": "Could not back up the original image, so nothing was changed. Check that the image can be loaded and that you may upload files.",
+      "CrossOrigin": "The original image comes from another site that does not allow it to be copied, so it cannot be edited here.",
+      "LoadFailed": "Could not load the current image (missing file, or a remote image that does not allow copying).",
+      "Failed": "Replacing the image failed; nothing was changed. See the console for details.",
+      "RestoreTitle": "Restore the original image?",
+      "RestoreContent": "The original image (or its backup in the world folder) is put back. Generated images stay in the world folder.",
+      "Restored": "The original image of {name} was restored.",
+      "RestoreFailed": "Restoring the original image failed. See the console for details.",
+      "AlreadyOpen": "Another replace-mode editor is already open. Finish or close it first.",
+      "CloseFirst": "Close the replace-mode editor first.",
+      "MenuPortrait": "Redraw portrait (replace mode)",
+      "MenuRestorePortrait": "Restore original portrait",
+      "SheetButton": "Redraw",
+      "Refused": {
+        "permission": "You do not have permission to change this image.",
+        "files": "Replace mode needs the “Upload New Files” and “Use File Browser” permissions. Ask your GM, or use in-place drawing instead.",
+        "video": "Video images cannot be redrawn in replace mode. Use in-place drawing instead."
+      }
+    }
+  }
+}

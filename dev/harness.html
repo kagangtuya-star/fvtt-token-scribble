@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TokenScribble harness</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="styles/token-scribble.css" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+        background: #2b2a28;
+        font-family: system-ui, sans-serif;
+      }
+      #board {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        touch-action: none;
+      }
+      .harness-bar {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        display: flex;
+        gap: 6px;
+        z-index: 100;
+        font-size: 12px;
+      }
+      .harness-bar button,
+      .harness-bar select {
+        padding: 4px 8px;
+        border-radius: 6px;
+        border: 1px solid #0006;
+        background: #fffd;
+        cursor: pointer;
+      }
+      .harness-log {
+        position: fixed;
+        top: 44px;
+        left: 10px;
+        max-width: 360px;
+        padding: 6px 8px;
+        border-radius: 6px;
+        background: #000a;
+        color: #eee;
+        font: 11px/1.4 ui-monospace, monospace;
+        white-space: pre-wrap;
+        z-index: 100;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="board"></canvas>
+    <div class="harness-bar" data-ts-ui>
+      <button type="button" id="h-edit">Edit token</button>
+      <select id="h-lang" aria-label="Language">
+        <option value="en">English</option>
+        <option value="zh-CN">简体中文</option>
+      </select>
+      <select id="h-theme" aria-label="Theme">
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+      </select>
+      <button type="button" id="h-reset">Reset drawing</button>
+    </div>
+    <div class="harness-log" id="h-log"></div>
+    <script type="module" src="dev/harness.js"></script>
+  </body>
+</html>

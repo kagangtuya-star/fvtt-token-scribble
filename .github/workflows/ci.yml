@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm test
+
+      - name: i18n consistency
+        run: npm run lint:i18n
+
+      - name: Build and validate manifest
+        run: |
+          npm run build
+          npm run validate
+
+      - name: Package
+        run: node tools/package.mjs
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: token-scribble-${{ github.sha }}
+          path: release/
+          if-no-files-found: error
