@@ -6,8 +6,9 @@ image. For Foundry VTT **v13 and v14**.
 
 在地图上直接给棋子作画：按一下键就在鼠标处生成一枚透明棋子并开始绘画，也可以在任何已有棋子上涂鸦，原图不受影响。支持 Foundry VTT **v13 与 v14**。
 
-> Status: 1.0.0, not yet verified inside a running Foundry instance — see
-> [docs/COMPATIBILITY.md](docs/COMPATIBILITY.md).
+<img width="984" height="854" alt="PixPin_2026-11-23_20-03-14" src="https://github.com/user-attachments/assets/dfc711e7-5c96-49ce-ab4b-f27d74eacfa1" />
+<img width="953" height="875" alt="PixPin_2026-11-23_20-06-33" src="https://github.com/user-attachments/assets/8fa0448a-0c89-4d94-a0da-5060fa95b457" />
+<img width="814" height="690" alt="PixPin_2026-11-23_20-06-16" src="https://github.com/user-attachments/assets/455973bb-eab6-4abf-8087-98c884f19e4e" />
 
 ---
 
