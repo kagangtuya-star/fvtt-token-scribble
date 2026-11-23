@@ -55,14 +55,17 @@ describe("manifest validation", () => {
     writeFileSync(join(dir, f), "");
   }
   mkdirSync(join(dir, "lang"), { recursive: true });
-  for (const l of manifest.languages) writeFileSync(join(dir, l.path), readFileSync(new URL(`../${l.path}`, import.meta.url)));
+  for (const l of manifest.languages)
+    writeFileSync(join(dir, l.path), readFileSync(new URL(`../${l.path}`, import.meta.url)));
 
   it("accepts the repository manifest", () => {
     assert.deepEqual(validateManifest(manifest, dir), []);
   });
 
   it("requires URLs for releases and checks their shape", () => {
-    assert.equal(validateManifest(manifest, dir, { requireUrls: true }).length, 3);
+    const missingUrls = { ...manifest };
+    for (const key of ["url", "manifest", "download"]) delete missingUrls[key];
+    assert.equal(validateManifest(missingUrls, dir, { requireUrls: true }).length, 3);
     const release = {
       ...manifest,
       url: "https://github.com/o/r",
@@ -76,7 +79,9 @@ describe("manifest validation", () => {
   it("rejects legacy and broken manifests", () => {
     assert.ok(validateManifest({ ...manifest, name: "token-scribble" }, dir).some((p) => p.includes("pre-v10")));
     assert.ok(validateManifest({ ...manifest, compatibility: { minimum: "12" } }, dir).length > 0);
-    assert.ok(validateManifest({ ...manifest, esmodules: ["scripts/missing.js"] }, dir).some((p) => p.includes("missing")));
+    assert.ok(
+      validateManifest({ ...manifest, esmodules: ["scripts/missing.js"] }, dir).some((p) => p.includes("missing")),
+    );
     assert.ok(validateManifest({ ...manifest, socket: false }, dir).length > 0);
     rmSync(dir, { recursive: true, force: true });
   });

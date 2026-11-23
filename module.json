@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "authors": [
     {
-      "name": "TokenScribble contributors"
+      "name": "星尘"
     }
   ],
   "compatibility": {
@@ -24,17 +24,16 @@
       "lang": "cn",
       "name": "中文",
       "path": "lang/zh-CN.json"
-    },
-    {
-      "lang": "zh-cn",
-      "name": "简体中文",
-      "path": "lang/zh-CN.json"
     }
   ],
   "socket": true,
   "license": "LICENSE",
   "readme": "README.md",
   "changelog": "CHANGELOG.md",
+  "url": "https://github.com/kagangtuya-star/fvtt-token-scribble",
+  "manifest": "https://github.com/kagangtuya-star/fvtt-token-scribble/releases/latest/download/module.json",
+  "download": "https://github.com/kagangtuya-star/fvtt-token-scribble/releases/download/v1.0.0/module.zip",
+  "bugs": "https://github.com/kagangtuya-star/fvtt-token-scribble/issues",
   "flags": {
     "dataFormat": 1
   }

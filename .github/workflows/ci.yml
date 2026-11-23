@@ -9,9 +9,14 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
 
@@ -37,10 +42,14 @@ jobs:
           npm run validate
 
       - name: Package
+        env:
+          MODULE_REPO: ${{ github.repository }}
         run: node tools/package.mjs
 
       - uses: actions/upload-artifact@v7
         with:
           name: token-scribble-${{ github.sha }}
-          path: release/
+          path: |
+            release/module.json
+            release/module.zip
           if-no-files-found: error

@@ -166,12 +166,11 @@ Hooks.on("token-scribble.ready", (api) => { /* … */ });
 Install from a release manifest URL once releases are published:
 
 ```
-https://github.com/<owner>/<repo>/releases/latest/download/module.json
+https://github.com/kagangtuya-star/fvtt-token-scribble/releases/latest/download/module.json
 ```
 
-`<owner>/<repo>` is the GitHub repository this project is pushed to. The
-release workflow fills in `url`, `manifest` and `download` automatically from
-the repository and tag, so no URL is hard-coded in the sources.
+The release workflow fills in `url`, `manifest` and `download` automatically
+from the repository and tag, including when publishing from a fork.
 
 ## Development
 
@@ -187,12 +186,15 @@ data format, the browser harness and the manual test plan inside Foundry.
 
 ### Releasing
 
-1. Bump `version` in both `package.json` and `module.json` and update
-   `CHANGELOG.md`.
-2. Push to GitHub and publish a release with tag `vX.Y.Z`.
-3. `.github/workflows/release.yml` builds, injects the URLs for that repository
-   and tag, and attaches `module.json` and `module.zip` to the release. The tag
-   must match the version or the workflow fails.
+1. Bump `version` in both `package.json` and `module.json`, update the source
+   manifest's `download` URL to the same `vX.Y.Z` tag, and update `CHANGELOG.md`.
+2. Push the version commit and its `vX.Y.Z` tag to GitHub. Alternatively,
+   publish a release for that tag or run the Release workflow manually with
+   the existing tag.
+3. `.github/workflows/release.yml` checks, builds, injects the URLs for that
+   repository and tag, and uploads `module.json` and `module.zip`. It creates
+   the release if needed; tags containing `-` create prereleases. The tag
+   must match the version or the workflow fails. Reruns replace the assets.
 
 ## License
 
