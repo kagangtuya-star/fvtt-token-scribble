@@ -810,7 +810,7 @@ body.theme-light {
 
 .ts-replace-stage {
   position: relative;
-  flex: 1 1 auto;
+  flex: 1 1 0;
   min-height: 160px;
   border-radius: var(--ts-radius-sm);
   overflow: hidden;
@@ -871,6 +871,52 @@ body.theme-light {
   font-size: 12px;
   line-height: 1.4;
   opacity: 0.8;
+}
+
+.ts-replace-dock,
+.ts-replace-info,
+.ts-replace-options,
+.ts-replace-footer,
+.ts-replace-viewbar {
+  flex-shrink: 0;
+}
+
+.ts-replace-viewbar,
+.ts-replace-targets {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.ts-replace-target-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.ts-replace-viewbar .ts-replace-scale {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: auto;
+  padding: 2px 8px;
+  font-size: 12px;
+}
+
+.ts-replace-targets button {
+  width: auto;
+  white-space: nowrap;
+}
+
+.ts-replace-targets button[aria-pressed="true"] {
+  background: var(--ts-accent);
+  color: var(--ts-accent-ink);
+  font-weight: 700;
+}
+
+.ts-replace-check[hidden] {
+  display: none;
 }
 
 .ts-replace-footer {

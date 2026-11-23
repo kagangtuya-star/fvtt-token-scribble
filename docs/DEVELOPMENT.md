@@ -158,3 +158,19 @@ through this list in v13 **and** v14, with one GM and one player client:
     back the original, or the backup if the original file was deleted; an
     in-place drawing is baked in on apply and comes back on restore; video and
     cross-origin images are refused without changes.
+13. Replace viewport: on opening and resizing, the image is centred with a
+    percentage scale. Draw across each original edge: the view stays fixed
+    until pen-up, then fits the expanded image. Export/apply preserves the ink
+    and transparent margins (token centre and aspect stay fixed); the size hint
+    matches the PNG, capped at 4096 px. Manual zoom/pan stays manual across
+    resize and target switches; "Fit to window" restores automatic fitting.
+14. Replace targets: Token is selected from the HUD; the portrait entry opens
+    Portrait. Switch between them with unsaved strokes and verify independent
+    source images, aspect ratios, undo/redo and views. Saving one must preserve
+    the other draft and leave the window open. Close checks both drafts.
+    Portrait changes only Actor.img; from an actor, Token edits its prototype.
+    With an unlinked token the portrait is the base world actor's, and an
+    actorless token or insufficient actor permission disables Portrait. Restore
+    each independently, including a scene token and prototype with different
+    original images. If the source changed externally, saving the stale draft
+    must be refused (export remains available).

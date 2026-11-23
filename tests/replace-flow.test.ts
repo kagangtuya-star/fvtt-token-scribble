@@ -6,7 +6,7 @@
 import assert from "node:assert/strict";
 import { beforeEach, describe, it } from "node:test";
 import { MODULE_ID } from "../src/constants.ts";
-import { applyReplacement, BackupError, restoreOriginal, tokenTarget, portraitTarget } from "../src/foundry/replace.ts";
+import { applyReplacement, BackupError, restoreOriginal, tokenTarget, portraitTarget, prototypeTarget } from "../src/foundry/replace.ts";
 
 /* ---------------- fake server ---------------- */
 
@@ -190,6 +190,87 @@ describe("applyReplacement", () => {
     actor.prototypeToken.texture.src = "tokens/elsewhere.png";
     await restoreOriginal(target);
     assert.equal(actor.prototypeToken.texture.src, "tokens/elsewhere.png");
+  });
+
+  it("backs up and restores a different prototype original independently", async () => {
+    const { token, actor } = setup();
+    files.set("tokens/default.webp", new Blob(["PROTOTYPE"], { type: "image/webp" }));
+    actor.prototypeToken.texture.src = "tokens/default.webp";
+    const target = tokenTarget(token as unknown as FoundryTokenDocument);
+    await applyReplacement(target, png(), { prototype: true, bakedOverlay: false, now: 1000 });
+    const proto = prototypeTarget(actor as unknown as FoundryActor);
+    assert.equal(proto.record()!.original, "tokens/default.webp");
+    assert.equal(await files.get(proto.record()!.backup!)?.text(), "PROTOTYPE");
+    await restoreOriginal(target);
+    assert.equal(token.texture.src, "tokens/goblin.webp");
+    assert.equal(actor.prototypeToken.texture.src, "tokens/default.webp");
+    assert.equal(actor.img, "portraits/goblin.png");
+  });
+
+  it("changes neither document when the prototype backup fails", async () => {
+    const { token, actor } = setup();
+    actor.prototypeToken.texture.src = "tokens/missing.webp";
+    await assert.rejects(applyReplacement(tokenTarget(token as unknown as FoundryTokenDocument), png(), {
+      prototype: true, bakedOverlay: false, now: 1000,
+    }), BackupError);
+    assert.equal(token.updates.length, 0);
+    assert.equal(actor.updates.length, 0);
+    assert.ok(!calls.some((c) => c.startsWith("upload worlds/w/token-scribble/tokens/")));
+  });
+
+  it("keeps portrait, prototype and scene token replacement records separate", async () => {
+    const { token, actor } = setup();
+    const portrait = portraitTarget(actor as unknown as FoundryActor);
+    const proto = prototypeTarget(actor as unknown as FoundryActor);
+    const portraitPath = await applyReplacement(portrait, png(), { prototype: false, bakedOverlay: false, now: 1000 });
+    const protoPath = await applyReplacement(proto, png(), { prototype: false, bakedOverlay: false, now: 1001 });
+    assert.equal(actor.img, portraitPath);
+    assert.equal(actor.prototypeToken.texture.src, protoPath);
+    assert.equal(token.texture.src, "tokens/goblin.webp");
+    assert.equal(portrait.record()!.kind, "portrait");
+    assert.equal(proto.record()!.kind, "token");
+    await restoreOriginal(proto);
+    assert.equal(actor.prototypeToken.texture.src, "tokens/goblin.webp");
+    assert.equal(actor.img, portraitPath);
+    await restoreOriginal(portrait);
+    assert.equal(actor.img, "portraits/goblin.png");
+  });
+});
+
+describe("replace target switching", () => {
+  it("resolves a scene token's world portrait and an actor's prototype", () => {
+    const { token, actor } = setup();
+    const target = tokenTarget(token as unknown as FoundryTokenDocument);
+    assert.equal(target.related("token")!.key, target.key);
+    assert.equal(target.related("portrait")!.key, portraitTarget(actor as unknown as FoundryActor).key);
+    assert.equal(target.related("portrait")!.related("token")!.key, prototypeTarget(actor as unknown as FoundryActor).key);
+    assert.notEqual(target.key, prototypeTarget(actor as unknown as FoundryActor).key);
+  });
+
+  it("uses the base actor for unlinked tokens and has no portrait for actorless tokens", () => {
+    const { token, actor } = setup();
+    token.actorLink = false;
+    token.actor = { ...actor, img: "synthetic.png" };
+    const target = tokenTarget(token as unknown as FoundryTokenDocument);
+    assert.equal(target.related("portrait")!.src(), actor.img);
+    const standalone = { ...token, baseActor: null, actor: null };
+    assert.equal(tokenTarget(standalone as unknown as FoundryTokenDocument).related("portrait"), null);
+  });
+
+  it("checks portrait permission independently from scene-token permission", () => {
+    const { token, actor } = setup();
+    actor.canUserModify = () => false;
+    const target = tokenTarget(token as unknown as FoundryTokenDocument);
+    assert.equal(target.canModify(), true);
+    assert.equal(target.related("portrait")!.canModify(), false);
+    assert.equal(target.prototypeActor(), null);
+  });
+
+  it("distinguishes token ids shared by different scenes", () => {
+    const { token } = setup();
+    const a = tokenTarget({ ...token, parent: { id: "s1" } } as unknown as FoundryTokenDocument);
+    const b = tokenTarget({ ...token, parent: { id: "s2" } } as unknown as FoundryTokenDocument);
+    assert.notEqual(a.key, b.key);
   });
 });
 
